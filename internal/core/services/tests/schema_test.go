@@ -19,10 +19,10 @@ import (
 )
 
 func TestSchema_ImportSchema(t *testing.T) {
-	const url = "https://raw.githubusercontent.com/iden3/claim-schema-vocab/main/schemas/json/KYCAgeCredential-v3.json"
+	const url = "http://47.242.107.228:3003/schemas/json/KYCAgeCredential-v3.json"
 	const title = "someTitle"
 	const description = "someDescription"
-	const urlLD = "https://raw.githubusercontent.com/iden3/claim-schema-vocab/main/schemas/json-ld/kyc-v3.json-ld"
+	const urlLD = "http://47.242.107.228:3003/schemas/json-ld/kyc-v3.json-ld"
 	const schemaType = "KYCCountryOfResidenceCredential"
 	const did = "did:iden3:polygon:mumbai:wyFiV4w71QgWPn6bYLsZoysFay66gKtVa9kfu6yMZ"
 

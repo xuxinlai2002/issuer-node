@@ -66,7 +66,7 @@ func TestGetByRevocationNonce(t *testing.T) {
 		Identifier:      &idStr,
 		Issuer:          idStr,
 		SchemaHash:      "ca938857241db9451ea329256b9c06e5",
-		SchemaURL:       "https://raw.githubusercontent.com/iden3/claim-schema-vocab/main/schemas/json-ld/auth.json-ld",
+		SchemaURL:       "http://47.242.107.228:3003/schemas/json-ld/auth.json-ld",
 		SchemaType:      "AuthBJJCredential",
 		OtherIdentifier: "",
 		Expiration:      0,
@@ -88,7 +88,7 @@ func TestGetByRevocationNonce(t *testing.T) {
 		assert.Equal(t, idClaim, c.ID)
 		assert.Equal(t, &idStr, c.Identifier)
 		assert.Equal(t, "ca938857241db9451ea329256b9c06e5", c.SchemaHash)
-		assert.Equal(t, "https://raw.githubusercontent.com/iden3/claim-schema-vocab/main/schemas/json-ld/auth.json-ld", c.SchemaURL)
+		assert.Equal(t, "http://47.242.107.228:3003/schemas/json-ld/auth.json-ld", c.SchemaURL)
 		assert.Equal(t, "AuthBJJCredential", c.SchemaType)
 		assert.Equal(t, "", c.OtherIdentifier)
 		assert.Equal(t, int64(0), c.Expiration)
@@ -161,7 +161,7 @@ func TestGetAllByConnectionAndIssuerID(t *testing.T) {
 		Identifier:      common.ToPointer(issuerDID.String()),
 		Issuer:          issuerDID.String(),
 		SchemaHash:      "ca938857241db9451ea329256b9c06e5",
-		SchemaURL:       "https://raw.githubusercontent.com/iden3/claim-schema-vocab/main/schemas/json-ld/auth.json-ld",
+		SchemaURL:       "http://47.242.107.228:3003/schemas/json-ld/auth.json-ld",
 		SchemaType:      "AuthBJJCredential",
 		OtherIdentifier: userDID.String(),
 		Expiration:      0,
@@ -240,7 +240,7 @@ func TestGetAllByIssuerID(t *testing.T) {
 		Identifier:      common.ToPointer(issuerDID.String()),
 		Issuer:          issuerDID.String(),
 		SchemaHash:      "ca938857241db9451ea329256b9c06e5",
-		SchemaURL:       "https://raw.githubusercontent.com/iden3/claim-schema-vocab/main/schemas/json-ld/auth.json-ld",
+		SchemaURL:       "http://47.242.107.228:3003/schemas/json-ld/auth.json-ld",
 		SchemaType:      "AuthBJJCredential",
 		SignatureProof:  *jsonB,
 		OtherIdentifier: userDID.String(),
@@ -339,7 +339,7 @@ func TestGetClaimsIssuedForUserID(t *testing.T) {
 		Identifier:      common.ToPointer(did.String()),
 		Issuer:          did.String(),
 		SchemaHash:      "ca938857241db9451ea329256b9c06e5",
-		SchemaURL:       "https://raw.githubusercontent.com/iden3/claim-schema-vocab/main/schemas/json-ld/auth.json-ld",
+		SchemaURL:       "http://47.242.107.228:3003/schemas/json-ld/auth.json-ld",
 		SchemaType:      "AuthBJJCredential",
 		OtherIdentifier: userDID.String(),
 		Expiration:      0,

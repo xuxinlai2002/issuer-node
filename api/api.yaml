@@ -560,7 +560,7 @@ components:
         merklizedRootPosition:
           type: string
       example:
-        credentialSchema: "https://raw.githubusercontent.com/iden3/claim-schema-vocab/main/schemas/json/KYCAgeCredential-v3.json"
+        credentialSchema: "http://47.242.107.228:3003/schemas/json/KYCAgeCredential-v3.json"
         type: "KYCAgeCredential"
         credentialSubject:
           id: "fill with did"

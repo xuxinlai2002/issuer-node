@@ -96,24 +96,29 @@ func Process(ctx context.Context, ld loader.Loader, credentialType string, crede
 	validator = jsonSuite.Validator{}
 	parser = jsonSuite.Parser{}
 
+	fmt.Printf("### xxl Process.go 01 processor.InitProcessorOptions %+v \n", ld)
 	pr = processor.InitProcessorOptions(pr, processor.WithValidator(validator), processor.WithParser(parser), processor.WithSchemaLoader(ld))
 
 	schema, _, err := pr.Load(ctx)
+	fmt.Printf("### xxl Process.go 02 schema %+v \n", schema)
 	if err != nil {
 		return nil, ErrLoadSchema
 	}
 
 	jsonCredential, err := json.Marshal(credential)
+	fmt.Printf("### xxl Process.go 03 credential %+v jsonCredential %+v \n", credential, jsonCredential)
 	if err != nil {
 		return nil, err
 	}
 
 	err = pr.ValidateData(jsonCredential, schema)
+	fmt.Printf("### xxl Process.go 04 pr.ValidateData %+v \n", err)
 	if err != nil {
 		return nil, ErrValidateData
 	}
 
 	claim, err := pr.ParseClaim(ctx, credential, credentialType, schema, options)
+	fmt.Printf("### xxl Process.go 05 pr.ParseClaim claim:%+v err:%+v\n", claim, err)
 	if err != nil {
 		return nil, ErrParseClaim
 	}

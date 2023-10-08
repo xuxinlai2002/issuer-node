@@ -109,7 +109,7 @@ func (i *identity) Create(ctx context.Context, DIDMethod string, blockchain, net
 		})
 
 	if err != nil {
-		log.Error(ctx, "creating identity", "err", err, "id", identifier)
+		log.Error(ctx, "xxl ### creating identity", "err", err, "id", identifier)
 		return nil, fmt.Errorf("cannot create identity: %w", err)
 	}
 
@@ -560,6 +560,7 @@ func (i *identity) createIdentity(ctx context.Context, tx db.Querier, DIDMethod 
 	}
 
 	// TODO: add config options for blockchain and network
+	fmt.Printf("xxl DIDMethod:%v blockchain:%v networkID:%v \n", DIDMethod, blockchain, networkID)
 	// didType, err := core.BuildDIDType(core.DIDMethodPolygonID, core.Polygon, core.Mumbai)
 	didType, err := core.BuildDIDType(core.DIDMethod(DIDMethod), core.Blockchain(blockchain), core.NetworkID(networkID))
 	if err != nil {

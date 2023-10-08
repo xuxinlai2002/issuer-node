@@ -64,7 +64,7 @@ func (f *Fixture) NewClaim(t *testing.T, identity string) *domain.Claim {
 		Identifier:      &identity,
 		Issuer:          identity,
 		SchemaHash:      "ca938857241db9451ea329256b9c06e5",
-		SchemaURL:       "https://raw.githubusercontent.com/iden3/claim-schema-vocab/main/schemas/json-ld/auth.json-ld",
+		SchemaURL:       "http://47.242.107.228:3003/schemas/json-ld/auth.json-ld",
 		SchemaType:      "AuthBJJCredential",
 		OtherIdentifier: "did:polygonid:polygon:mumbai:2qE1BZ7gcmEoP2KppvFPCZqyzyb5tK9T6Gec5HFANQ",
 		Expiration:      0,
@@ -76,7 +76,7 @@ func (f *Fixture) NewClaim(t *testing.T, identity string) *domain.Claim {
 
 	vc := verifiable.W3CCredential{
 		ID:           fmt.Sprintf("http://localhost/api/v1/claim/%s", claimID),
-		Context:      []string{"https://www.w3.org/2018/credentials/v1", "https://raw.githubusercontent.com/iden3/claim-schema-vocab/main/schemas/json-ld/iden3credential-v2.json-ld", "https://raw.githubusercontent.com/iden3/claim-schema-vocab/main/schemas/json-ld/kyc-v3.json-ld"},
+		Context:      []string{"https://www.w3.org/2018/credentials/v1", "http://47.242.107.228:3003/schemas/json-ld/iden3credential-v2.json-ld", "http://47.242.107.228:3003/schemas/json-ld/kyc-v3.json-ld"},
 		Type:         []string{"VerifiableCredential", "KYCAgeCredential"},
 		IssuanceDate: common.ToPointer(time.Now().UTC()),
 		CredentialSubject: map[string]interface{}{
@@ -92,7 +92,7 @@ func (f *Fixture) NewClaim(t *testing.T, identity string) *domain.Claim {
 		},
 		Issuer: identity,
 		CredentialSchema: verifiable.CredentialSchema{
-			ID:   "https://raw.githubusercontent.com/iden3/claim-schema-vocab/main/schemas/json/KYCAgeCredential-v3.json",
+			ID:   "http://47.242.107.228:3003/schemas/json/KYCAgeCredential-v3.json",
 			Type: "JsonSchemaValidator2018",
 		},
 	}

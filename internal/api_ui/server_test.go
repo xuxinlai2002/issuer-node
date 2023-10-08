@@ -435,7 +435,7 @@ func TestServer_GetSchemas(t *testing.T) {
 }
 
 func TestServer_ImportSchema(t *testing.T) {
-	const url = "https://raw.githubusercontent.com/iden3/claim-schema-vocab/main/schemas/json/KYCAgeCredential-v3.json"
+	const url = "http://47.242.107.228:3003/schemas/json/KYCAgeCredential-v3.json"
 	const schemaType = "KYCCountryOfResidenceCredential"
 	ctx := context.Background()
 	schemaLoader := loader.CachedFactory(loader.MultiProtocolFactory(ipfsGateway), cachex)
@@ -695,7 +695,7 @@ func TestServer_DeleteConnection(t *testing.T) {
 		Identifier:      common.ToPointer(issuerDID.String()),
 		Issuer:          issuerDID.String(),
 		SchemaHash:      "ca938857241db9451ea329256b9c06e5",
-		SchemaURL:       "https://raw.githubusercontent.com/iden3/claim-schema-vocab/main/schemas/json-ld/auth.json-ld",
+		SchemaURL:       "http://47.242.107.228:3003/schemas/json-ld/auth.json-ld",
 		SchemaType:      "AuthBJJCredential",
 		OtherIdentifier: userDID2.String(),
 		Expiration:      0,
@@ -934,7 +934,7 @@ func TestServer_RevokeConnectionCredentials(t *testing.T) {
 		Identifier:      common.ToPointer(issuerDID.String()),
 		Issuer:          issuerDID.String(),
 		SchemaHash:      "ca938857241db9451ea329256b9c06e5",
-		SchemaURL:       "https://raw.githubusercontent.com/iden3/claim-schema-vocab/main/schemas/json-ld/auth.json-ld",
+		SchemaURL:       "http://47.242.107.228:3003/schemas/json-ld/auth.json-ld",
 		SchemaType:      "AuthBJJCredential",
 		OtherIdentifier: userDID.String(),
 		Expiration:      0,
@@ -1053,7 +1053,7 @@ func TestServer_CreateCredential(t *testing.T) {
 			name: "Happy path",
 			auth: authOk,
 			body: CreateCredentialRequest{
-				CredentialSchema: "https://raw.githubusercontent.com/iden3/claim-schema-vocab/main/schemas/json/KYCAgeCredential-v3.json",
+				CredentialSchema: "http://47.242.107.228:3003/schemas/json/KYCAgeCredential-v3.json",
 				Type:             "KYCAgeCredential",
 				CredentialSubject: map[string]any{
 					"id":           "did:polygonid:polygon:mumbai:2qE1BZ7gcmEoP2KppvFPCZqyzyb5tK9T6Gec5HFANQ",
@@ -1092,7 +1092,7 @@ func TestServer_CreateCredential(t *testing.T) {
 			name: "Wrong request - no proof provided",
 			auth: authOk,
 			body: CreateCredentialRequest{
-				CredentialSchema: "https://raw.githubusercontent.com/iden3/claim-schema-vocab/main/schemas/json/KYCAgeCredential-v3.json",
+				CredentialSchema: "http://47.242.107.228:3003/schemas/json/KYCAgeCredential-v3.json",
 				Type:             "KYCAgeCredential",
 				CredentialSubject: map[string]any{
 					"id":           "did:polygonid:polygon:mumbai:2qE1BZ7gcmEoP2KppvFPCZqyzyb5tK9T6Gec5HFANQ",
@@ -1318,7 +1318,7 @@ func TestServer_GetCredential(t *testing.T) {
 	}
 	typeC := "KYCAgeCredential"
 	merklizedRootPosition := "index"
-	schema := "https://raw.githubusercontent.com/iden3/claim-schema-vocab/main/schemas/json/KYCAgeCredential-v3.json"
+	schema := "http://47.242.107.228:3003/schemas/json/KYCAgeCredential-v3.json"
 	createdClaim1, err := claimsService.Save(ctx, ports.NewCreateClaimRequest(did, schema, credentialSubject, nil, typeC, nil, nil, &merklizedRootPosition, common.ToPointer(true), common.ToPointer(true), nil, false))
 	require.NoError(t, err)
 
@@ -1514,7 +1514,7 @@ func TestServer_GetCredentials(t *testing.T) {
 	}
 	typeC := "KYCAgeCredential"
 	merklizedRootPosition := "index"
-	schemaURL := "https://raw.githubusercontent.com/iden3/claim-schema-vocab/main/schemas/json/KYCAgeCredential-v3.json"
+	schemaURL := "http://47.242.107.228:3003/schemas/json/KYCAgeCredential-v3.json"
 	future := time.Now().Add(1000 * time.Hour)
 	past := time.Now().Add(-1000 * time.Hour)
 	iReq := ports.NewImportSchemaRequest(schemaURL, typeC, common.ToPointer("someTitle"), uuid.NewString(), common.ToPointer("someDescription"))
@@ -1794,7 +1794,7 @@ func TestServer_GetCredentialQrCode(t *testing.T) {
 	}
 	typeC := "KYCAgeCredential"
 	merklizedRootPosition := "index"
-	schema := "https://raw.githubusercontent.com/iden3/claim-schema-vocab/main/schemas/json/KYCAgeCredential-v3.json"
+	schema := "http://47.242.107.228:3003/schemas/json/KYCAgeCredential-v3.json"
 	createdClaim, err := claimsService.Save(ctx, ports.NewCreateClaimRequest(did, schema, credentialSubject, nil, typeC, nil, nil, &merklizedRootPosition, common.ToPointer(true), common.ToPointer(true), nil, false))
 	require.NoError(t, err)
 
@@ -2092,8 +2092,8 @@ func TestServer_GetConnections(t *testing.T) {
 
 	fixture := tests.NewFixture(storage)
 
-	schemaURL := "https://raw.githubusercontent.com/iden3/claim-schema-vocab/main/schemas/json/KYCAgeCredential-v3.json"
-	schemaContext := "https://raw.githubusercontent.com/iden3/claim-schema-vocab/main/schemas/json-ld/kyc-v3.json-ld"
+	schemaURL := "http://47.242.107.228:3003/schemas/json/KYCAgeCredential-v3.json"
+	schemaContext := "http://47.242.107.228:3003/schemas/json-ld/kyc-v3.json-ld"
 	schemaType := "KYCAgeCredential"
 	s := &domain.Schema{
 		ID:        uuid.New(),
@@ -2558,7 +2558,7 @@ func TestServer_RevokeCredential(t *testing.T) {
 		Identifier:      common.ToPointer(did.String()),
 		Issuer:          did.String(),
 		SchemaHash:      "ca938857241db9451ea329256b9c06e5",
-		SchemaURL:       "https://raw.githubusercontent.com/iden3/claim-schema-vocab/main/schemas/json-ld/auth.json-ld",
+		SchemaURL:       "http://47.242.107.228:3003/schemas/json-ld/auth.json-ld",
 		SchemaType:      "AuthBJJCredential",
 		OtherIdentifier: "",
 		Expiration:      0,
@@ -2657,7 +2657,7 @@ func TestServer_CreateLink(t *testing.T) {
 		method     = "polygonid"
 		blockchain = "polygon"
 		network    = "mumbai"
-		url        = "https://raw.githubusercontent.com/iden3/claim-schema-vocab/main/schemas/json/KYCAgeCredential-v3.json"
+		url        = "http://47.242.107.228:3003/schemas/json/KYCAgeCredential-v3.json"
 		schemaType = "KYCCountryOfResidenceCredential"
 	)
 	ctx := log.NewContext(context.Background(), log.LevelDebug, log.OutputText, os.Stdout)
@@ -2886,7 +2886,7 @@ func TestServer_ActivateLink(t *testing.T) {
 		method     = "polygonid"
 		blockchain = "polygon"
 		network    = "mumbai"
-		url        = "https://raw.githubusercontent.com/iden3/claim-schema-vocab/main/schemas/json/KYCAgeCredential-v3.json"
+		url        = "http://47.242.107.228:3003/schemas/json/KYCAgeCredential-v3.json"
 		schemaType = "KYCCountryOfResidenceCredential"
 	)
 	ctx := log.NewContext(context.Background(), log.LevelDebug, log.OutputText, os.Stdout)
@@ -3038,7 +3038,7 @@ func TestServer_GetLink(t *testing.T) {
 		method     = "polygonid"
 		blockchain = "polygon"
 		network    = "mumbai"
-		url        = "https://raw.githubusercontent.com/iden3/claim-schema-vocab/main/schemas/json/KYCAgeCredential-v3.json"
+		url        = "http://47.242.107.228:3003/schemas/json/KYCAgeCredential-v3.json"
 		schemaType = "KYCCountryOfResidenceCredential"
 	)
 	ctx := log.NewContext(context.Background(), log.LevelDebug, log.OutputText, os.Stdout)
@@ -3210,7 +3210,7 @@ func TestServer_GetAllLinks(t *testing.T) {
 		method     = "polygonid"
 		blockchain = "polygon"
 		network    = "mumbai"
-		sUrl       = "https://raw.githubusercontent.com/iden3/claim-schema-vocab/main/schemas/json/KYCAgeCredential-v3.json"
+		sUrl       = "http://47.242.107.228:3003/schemas/json/KYCAgeCredential-v3.json"
 		schemaType = "KYCCountryOfResidenceCredential"
 	)
 	ctx := log.NewContext(context.Background(), log.LevelDebug, log.OutputText, os.Stdout)
@@ -3426,7 +3426,7 @@ func TestServer_DeleteLink(t *testing.T) {
 		method     = "polygonid"
 		blockchain = "polygon"
 		network    = "mumbai"
-		url        = "https://raw.githubusercontent.com/iden3/claim-schema-vocab/main/schemas/json/KYCAgeCredential-v3.json"
+		url        = "http://47.242.107.228:3003/schemas/json/KYCAgeCredential-v3.json"
 		schemaType = "KYCCountryOfResidenceCredential"
 	)
 	ctx := log.NewContext(context.Background(), log.LevelDebug, log.OutputText, os.Stdout)
@@ -3544,7 +3544,7 @@ func TestServer_DeleteLinkForDifferentDID(t *testing.T) {
 		method     = "polygonid"
 		blockchain = "polygon"
 		network    = "mumbai"
-		url        = "https://raw.githubusercontent.com/iden3/claim-schema-vocab/main/schemas/json/KYCAgeCredential-v3.json"
+		url        = "http://47.242.107.228:3003/schemas/json/KYCAgeCredential-v3.json"
 		schemaType = "KYCCountryOfResidenceCredential"
 	)
 	ctx := log.NewContext(context.Background(), log.LevelDebug, log.OutputText, os.Stdout)
@@ -3659,7 +3659,7 @@ func TestServer_CreateLinkQRCode(t *testing.T) {
 		method     = "polygonid"
 		blockchain = "polygon"
 		network    = "mumbai"
-		url        = "https://raw.githubusercontent.com/iden3/claim-schema-vocab/main/schemas/json/KYCAgeCredential-v3.json"
+		url        = "http://47.242.107.228:3003/schemas/json/KYCAgeCredential-v3.json"
 		schemaType = "KYCCountryOfResidenceCredential"
 	)
 	ctx := log.NewContext(context.Background(), log.LevelDebug, log.OutputText, os.Stdout)
@@ -3795,7 +3795,7 @@ func TestServer_GetLinkQRCode(t *testing.T) {
 		method     = "polygonid"
 		blockchain = "polygon"
 		network    = "mumbai"
-		url        = "https://raw.githubusercontent.com/iden3/claim-schema-vocab/main/schemas/json/KYCAgeCredential-v3.json"
+		url        = "http://47.242.107.228:3003/schemas/json/KYCAgeCredential-v3.json"
 		schemaType = "KYCCountryOfResidenceCredential"
 	)
 	ctx := log.NewContext(context.Background(), log.LevelDebug, log.OutputText, os.Stdout)
@@ -3990,7 +3990,7 @@ func TestServer_GetStateStatus(t *testing.T) {
 	}
 	claimsService := services.NewClaim(claimsRepo, identityService, mtService, identityStateRepo, schemaLoader, storage, claimsConf, pubsub.NewMock(), ipfsGateway)
 	connectionsService := services.NewConnection(connectionsRepository, storage)
-	schema := "https://raw.githubusercontent.com/iden3/claim-schema-vocab/main/schemas/json/KYCAgeCredential-v3.json"
+	schema := "http://47.242.107.228:3003/schemas/json/KYCAgeCredential-v3.json"
 	credentialSubject := map[string]any{
 		"id":           "did:polygonid:polygon:mumbai:2qE1BZ7gcmEoP2KppvFPCZqyzyb5tK9T6Gec5HFANQ",
 		"birthday":     19960424,
@@ -4203,7 +4203,7 @@ func TestServer_GetRevocationStatus(t *testing.T) {
 	}
 	typeC := "KYCAgeCredential"
 	merklizedRootPosition := "index"
-	schema := "https://raw.githubusercontent.com/iden3/claim-schema-vocab/main/schemas/json/KYCAgeCredential-v3.json"
+	schema := "http://47.242.107.228:3003/schemas/json/KYCAgeCredential-v3.json"
 	createdCredential, err := claimsService.Save(ctx, ports.NewCreateClaimRequest(did, schema, credentialSubject, nil, typeC, nil, nil, &merklizedRootPosition, common.ToPointer(true), common.ToPointer(true), nil, false))
 	require.NoError(t, err)
 

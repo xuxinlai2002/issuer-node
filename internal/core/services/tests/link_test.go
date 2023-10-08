@@ -57,7 +57,7 @@ func Test_link_issueClaim(t *testing.T) {
 	identity2, err := identityService.Create(ctx, method, blockchain, network, "http://localhost:3001")
 	assert.NoError(t, err)
 
-	schemaUrl := "https://raw.githubusercontent.com/iden3/claim-schema-vocab/main/schemas/json/KYCAgeCredential-v3.json"
+	schemaUrl := "http://47.242.107.228:3003/schemas/json/KYCAgeCredential-v3.json"
 	did, err := core.ParseDID(identity.Identifier)
 	assert.NoError(t, err)
 

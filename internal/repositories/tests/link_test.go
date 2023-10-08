@@ -197,7 +197,7 @@ func TestGetAll(t *testing.T) {
 				Identifier:      &didStr,
 				Issuer:          didStr,
 				SchemaHash:      "ca938857241db9451ea329256b9c06e5",
-				SchemaURL:       "https://raw.githubusercontent.com/iden3/claim-schema-vocab/main/schemas/json-ld/auth.json-ld",
+				SchemaURL:       "http://47.242.107.228:3003/schemas/json-ld/auth.json-ld",
 				SchemaType:      "AuthBJJCredential",
 				OtherIdentifier: "did:polygonid:polygon:mumbai:2qP8KN3KRwBi37jB2ENXrWxhTo3pefaU5u5BFPbjYo",
 				Expiration:      0,

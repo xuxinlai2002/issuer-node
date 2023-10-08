@@ -22,7 +22,7 @@ func TestValidateCredentialSubject(t *testing.T) {
 	for _, tc := range []config{
 		{
 			name:       "invalid date format",
-			schemaURL:  "https://raw.githubusercontent.com/iden3/claim-schema-vocab/main/schemas/json/KYCEmployee-v101.json",
+			schemaURL:  "http://47.242.107.228:3003/schemas/json/KYCEmployee-v101.json",
 			schemaType: "KYCEmployee",
 			credentialSubject: map[string]interface{}{
 				"ZKPexperiance": true,
@@ -35,7 +35,7 @@ func TestValidateCredentialSubject(t *testing.T) {
 		},
 		{
 			name:       "invalid bool format",
-			schemaURL:  "https://raw.githubusercontent.com/iden3/claim-schema-vocab/main/schemas/json/KYCEmployee-v101.json",
+			schemaURL:  "http://47.242.107.228:3003/schemas/json/KYCEmployee-v101.json",
 			schemaType: "KYCEmployee",
 			credentialSubject: map[string]interface{}{
 				"ZKPexperiance": "true",
@@ -48,7 +48,7 @@ func TestValidateCredentialSubject(t *testing.T) {
 		},
 		{
 			name:       "invalid integer format",
-			schemaURL:  "https://raw.githubusercontent.com/iden3/claim-schema-vocab/main/schemas/json/KYCEmployee-v101.json",
+			schemaURL:  "http://47.242.107.228:3003/schemas/json/KYCEmployee-v101.json",
 			schemaType: "KYCEmployee",
 			credentialSubject: map[string]interface{}{
 				"ZKPexperiance": true,
@@ -61,7 +61,7 @@ func TestValidateCredentialSubject(t *testing.T) {
 		},
 		{
 			name:       "invalid number format",
-			schemaURL:  "https://raw.githubusercontent.com/iden3/claim-schema-vocab/main/schemas/json/KYCEmployee-v101.json",
+			schemaURL:  "http://47.242.107.228:3003/schemas/json/KYCEmployee-v101.json",
 			schemaType: "KYCEmployee",
 			credentialSubject: map[string]interface{}{
 				"ZKPexperiance": true,
@@ -74,7 +74,7 @@ func TestValidateCredentialSubject(t *testing.T) {
 		},
 		{
 			name:       "invalid string format",
-			schemaURL:  "https://raw.githubusercontent.com/iden3/claim-schema-vocab/main/schemas/json/KYCEmployee-v101.json",
+			schemaURL:  "http://47.242.107.228:3003/schemas/json/KYCEmployee-v101.json",
 			schemaType: "KYCEmployee",
 			credentialSubject: map[string]interface{}{
 				"ZKPexperiance": true,
@@ -87,7 +87,7 @@ func TestValidateCredentialSubject(t *testing.T) {
 		},
 		{
 			name:       "happy path, ok",
-			schemaURL:  "https://raw.githubusercontent.com/iden3/claim-schema-vocab/main/schemas/json/KYCEmployee-v101.json",
+			schemaURL:  "http://47.242.107.228:3003/schemas/json/KYCEmployee-v101.json",
 			schemaType: "KYCEmployee",
 			credentialSubject: map[string]interface{}{
 				"ZKPexperiance": true,

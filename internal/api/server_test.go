@@ -202,7 +202,7 @@ func TestServer_RevokeClaim(t *testing.T) {
 		Identifier:      &idStr,
 		Issuer:          idStr,
 		SchemaHash:      "ca938857241db9451ea329256b9c06e5",
-		SchemaURL:       "https://raw.githubusercontent.com/iden3/claim-schema-vocab/main/schemas/json-ld/auth.json-ld",
+		SchemaURL:       "http://47.242.107.228:3003/schemas/json-ld/auth.json-ld",
 		SchemaType:      "AuthBJJCredential",
 		OtherIdentifier: "",
 		Expiration:      0,
@@ -372,7 +372,7 @@ func TestServer_CreateClaim(t *testing.T) {
 			auth: authOk,
 			did:  did,
 			body: CreateClaimRequest{
-				CredentialSchema: "https://raw.githubusercontent.com/iden3/claim-schema-vocab/main/schemas/json/KYCAgeCredential-v3.json",
+				CredentialSchema: "http://47.242.107.228:3003/schemas/json/KYCAgeCredential-v3.json",
 				Type:             "KYCAgeCredential",
 				CredentialSubject: map[string]any{
 					"id":           "did:polygonid:polygon:mumbai:2qE1BZ7gcmEoP2KppvFPCZqyzyb5tK9T6Gec5HFANQ",
@@ -810,9 +810,9 @@ func TestServer_GetClaim(t *testing.T) {
 			expected: expected{
 				httpCode: http.StatusOK,
 				response: GetClaim200JSONResponse{
-					Context: []string{"https://www.w3.org/2018/credentials/v1", "https://raw.githubusercontent.com/iden3/claim-schema-vocab/main/schemas/json-ld/iden3credential-v2.json-ld", "https://raw.githubusercontent.com/iden3/claim-schema-vocab/main/schemas/json-ld/kyc-v3.json-ld"},
+					Context: []string{"https://www.w3.org/2018/credentials/v1", "http://47.242.107.228:3003/schemas/json-ld/iden3credential-v2.json-ld", "http://47.242.107.228:3003/schemas/json-ld/kyc-v3.json-ld"},
 					CredentialSchema: CredentialSchema{
-						"https://raw.githubusercontent.com/iden3/claim-schema-vocab/main/schemas/json/KYCAgeCredential-v3.json",
+						"http://47.242.107.228:3003/schemas/json/KYCAgeCredential-v3.json",
 						"JsonSchemaValidator2018",
 					},
 					CredentialStatus: verifiable.CredentialStatus{
@@ -979,9 +979,9 @@ func TestServer_GetClaims(t *testing.T) {
 				len:      1,
 				response: GetClaims200JSONResponse{
 					GetClaimResponse{
-						Context: []string{"https://www.w3.org/2018/credentials/v1", "https://raw.githubusercontent.com/iden3/claim-schema-vocab/main/schemas/json-ld/iden3credential-v2.json-ld", "https://raw.githubusercontent.com/iden3/claim-schema-vocab/main/schemas/json-ld/kyc-v3.json-ld"},
+						Context: []string{"https://www.w3.org/2018/credentials/v1", "http://47.242.107.228:3003/schemas/json-ld/iden3credential-v2.json-ld", "http://47.242.107.228:3003/schemas/json-ld/kyc-v3.json-ld"},
 						CredentialSchema: CredentialSchema{
-							"https://raw.githubusercontent.com/iden3/claim-schema-vocab/main/schemas/json/KYCAgeCredential-v3.json",
+							"http://47.242.107.228:3003/schemas/json/KYCAgeCredential-v3.json",
 							"JsonSchemaValidator2018",
 						},
 						CredentialStatus: verifiable.CredentialStatus{
@@ -1015,9 +1015,9 @@ func TestServer_GetClaims(t *testing.T) {
 				len:      1,
 				response: GetClaims200JSONResponse{
 					GetClaimResponse{
-						Context: []string{"https://www.w3.org/2018/credentials/v1", "https://raw.githubusercontent.com/iden3/claim-schema-vocab/main/schemas/json-ld/iden3credential-v2.json-ld", "https://raw.githubusercontent.com/iden3/claim-schema-vocab/main/schemas/json-ld/kyc-v3.json-ld"},
+						Context: []string{"https://www.w3.org/2018/credentials/v1", "http://47.242.107.228:3003/schemas/json-ld/iden3credential-v2.json-ld", "http://47.242.107.228:3003/schemas/json-ld/kyc-v3.json-ld"},
 						CredentialSchema: CredentialSchema{
-							"https://raw.githubusercontent.com/iden3/claim-schema-vocab/main/schemas/json/KYCAgeCredential-v3.json",
+							"http://47.242.107.228:3003/schemas/json/KYCAgeCredential-v3.json",
 							"JsonSchemaValidator2018",
 						},
 						CredentialStatus: verifiable.CredentialStatus{
@@ -1052,9 +1052,9 @@ func TestServer_GetClaims(t *testing.T) {
 				len:      1,
 				response: GetClaims200JSONResponse{
 					GetClaimResponse{
-						Context: []string{"https://www.w3.org/2018/credentials/v1", "https://raw.githubusercontent.com/iden3/claim-schema-vocab/main/schemas/json-ld/iden3credential-v2.json-ld", "https://raw.githubusercontent.com/iden3/claim-schema-vocab/main/schemas/json-ld/kyc-v3.json-ld"},
+						Context: []string{"https://www.w3.org/2018/credentials/v1", "http://47.242.107.228:3003/schemas/json-ld/iden3credential-v2.json-ld", "http://47.242.107.228:3003/schemas/json-ld/kyc-v3.json-ld"},
 						CredentialSchema: CredentialSchema{
-							"https://raw.githubusercontent.com/iden3/claim-schema-vocab/main/schemas/json/KYCAgeCredential-v3.json",
+							"http://47.242.107.228:3003/schemas/json/KYCAgeCredential-v3.json",
 							"JsonSchemaValidator2018",
 						},
 						CredentialStatus: verifiable.CredentialStatus{
@@ -1101,9 +1101,9 @@ func TestServer_GetClaims(t *testing.T) {
 				len:      1,
 				response: GetClaims200JSONResponse{
 					GetClaimResponse{
-						Context: []string{"https://www.w3.org/2018/credentials/v1", "https://raw.githubusercontent.com/iden3/claim-schema-vocab/main/schemas/json-ld/iden3credential-v2.json-ld", "https://raw.githubusercontent.com/iden3/claim-schema-vocab/main/schemas/json-ld/kyc-v3.json-ld"},
+						Context: []string{"https://www.w3.org/2018/credentials/v1", "http://47.242.107.228:3003/schemas/json-ld/iden3credential-v2.json-ld", "http://47.242.107.228:3003/schemas/json-ld/kyc-v3.json-ld"},
 						CredentialSchema: CredentialSchema{
-							"https://raw.githubusercontent.com/iden3/claim-schema-vocab/main/schemas/json/KYCAgeCredential-v3.json",
+							"http://47.242.107.228:3003/schemas/json/KYCAgeCredential-v3.json",
 							"JsonSchemaValidator2018",
 						},
 						CredentialStatus: verifiable.CredentialStatus{
@@ -1137,9 +1137,9 @@ func TestServer_GetClaims(t *testing.T) {
 				len:      1,
 				response: GetClaims200JSONResponse{
 					GetClaimResponse{
-						Context: []string{"https://www.w3.org/2018/credentials/v1", "https://raw.githubusercontent.com/iden3/claim-schema-vocab/main/schemas/json-ld/iden3credential-v2.json-ld", "https://raw.githubusercontent.com/iden3/claim-schema-vocab/main/schemas/json-ld/kyc-v3.json-ld"},
+						Context: []string{"https://www.w3.org/2018/credentials/v1", "http://47.242.107.228:3003/schemas/json-ld/iden3credential-v2.json-ld", "http://47.242.107.228:3003/schemas/json-ld/kyc-v3.json-ld"},
 						CredentialSchema: CredentialSchema{
-							"https://raw.githubusercontent.com/iden3/claim-schema-vocab/main/schemas/json/KYCAgeCredential-v3.json",
+							"http://47.242.107.228:3003/schemas/json/KYCAgeCredential-v3.json",
 							"JsonSchemaValidator2018",
 						},
 						CredentialStatus: verifiable.CredentialStatus{
@@ -1222,7 +1222,7 @@ func TestServer_GetRevocationStatus(t *testing.T) {
 	server := NewServer(&cfg, identityService, claimsService, NewPublisherMock(), NewPackageManagerMock(), nil)
 	handler := getHandler(context.Background(), server)
 
-	schema := "https://raw.githubusercontent.com/iden3/claim-schema-vocab/main/schemas/json/KYCAgeCredential-v3.json"
+	schema := "http://47.242.107.228:3003/schemas/json/KYCAgeCredential-v3.json"
 	did, _ := core.ParseDID(identity.Identifier)
 	credentialSubject := map[string]any{
 		"id":           "did:polygonid:polygon:mumbai:2qE1BZ7gcmEoP2KppvFPCZqyzyb5tK9T6Gec5HFANQ",

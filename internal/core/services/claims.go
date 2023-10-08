@@ -167,9 +167,12 @@ func (c *claim) CreateCredential(ctx context.Context, req *ports.CreateClaimRequ
 		opts.MerklizerOpts = []merklize.MerklizeOption{merklize.WithIPFSClient(c.ipfsClient)}
 	}
 
+	fmt.Printf("### xxl claim.go 00 CreateCredential schemaPkg.Process  req.Schema:%+v "+
+		"credentialType : %+v vc: %+v opts:%+v \n", req.Schema, credentialType, vc, opts)
+
 	coreClaim, err := schemaPkg.Process(ctx, c.loaderFactory(req.Schema), credentialType, vc, opts)
 	if err != nil {
-		log.Error(ctx, "credential subject attributes don't match the provided schema", "err", err)
+		log.Error(ctx, "xxl 0111 credential subject attributes don't match the provided schema abc", "err", err)
 		if errors.Is(err, schemaPkg.ErrParseClaim) {
 			log.Error(ctx, "error parsing claim", "err", err)
 			return nil, ErrParseClaim
@@ -197,6 +200,7 @@ func (c *claim) CreateCredential(ctx context.Context, req *ports.CreateClaimRequ
 	claim.ID = vcID
 
 	if req.SignatureProof {
+		fmt.Printf("xxl claim.go 01 %+v\n", req.DID)
 		authClaim, err := c.GetAuthClaim(ctx, req.DID)
 		if err != nil {
 			log.Error(ctx, "cannot retrieve the auth claim", "err", err)
@@ -307,6 +311,8 @@ func (c *claim) GetAuthClaim(ctx context.Context, did *core.DID) (*domain.Claim,
 	if err != nil {
 		return nil, err
 	}
+
+	fmt.Printf("###xxl GetAuthClaim did:%+v authHash %+v\n", did, string(authHash))
 	return c.icRepo.FindOneClaimBySchemaHash(ctx, c.storage.Pgx, did, string(authHash))
 }
 

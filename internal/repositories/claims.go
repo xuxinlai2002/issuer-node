@@ -291,6 +291,7 @@ func (c *claims) GetByRevocationNonce(ctx context.Context, conn db.Querier, iden
 func (c *claims) FindOneClaimBySchemaHash(ctx context.Context, conn db.Querier, subject *core.DID, schemaHash string) (*domain.Claim, error) {
 	var claim domain.Claim
 
+	fmt.Printf("###xxl 00 FindOneClaimBySchemaHash other_identifier: %+v  schema_hash: %+v\n", subject.String(), schemaHash)
 	row := conn.QueryRow(ctx,
 		`SELECT claims.id,
 		   issuer,
@@ -335,10 +336,13 @@ func (c *claims) FindOneClaimBySchemaHash(ctx context.Context, conn db.Querier, 
 		&claim.Revoked,
 		&claim.CoreClaim)
 
+	fmt.Printf("###xxl 01 FindOneClaimBySchemaHash claim: %+v \n", claim)
+
 	if err == pgx.ErrNoRows {
 		return nil, ErrClaimDoesNotExist
 	}
 
+	fmt.Printf("###xxl 01 FindOneClaimBySchemaHash claim: end \n")
 	return &claim, err
 }
 

@@ -887,7 +887,7 @@ components:
       properties:
         url:
           type: string
-          example: "https://raw.githubusercontent.com/iden3/claim-schema-vocab/main/schemas/json/KYCAgeCredential-v3.json"
+          example: "http://47.242.107.228:3003/schemas/json/KYCAgeCredential-v3.json"
         schemaType:
           type: string
           example: "vaccinationCertificate"
@@ -1010,7 +1010,7 @@ components:
           example: c79c9c04-8c98-40f2-a7a0-5eeabf08d836
         description:
           type: string
-          example: https://raw.githubusercontent.com/iden3/claim-schema-vocab/main/schemas/json-ld/kyc-v3.json-ld#KYCAgeCredential
+          example: http://47.242.107.228:3003/schemas/json-ld/kyc-v3.json-ld#KYCAgeCredential
 
 
     CredentialLinkQrCodeResponse:
@@ -1125,7 +1125,7 @@ components:
           example: "KYCAgeCredential"
         schemaUrl:
           type: string
-          example: "https://raw.githubusercontent.com/iden3/claim-schema-vocab/main/schemas/json/KYCAgeCredential-v3.json"
+          example: "http://47.242.107.228:3003/schemas/json/KYCAgeCredential-v3.json"
         revoked:
           type: boolean
           example: false
@@ -1336,7 +1336,7 @@ components:
         credentialSchema:
           type: string
           x-omitempty: false
-          example: "https://raw.githubusercontent.com/iden3/claim-schema-vocab/main/schemas/json/KYCAgeCredential-v3.json"
+          example: "http://47.242.107.228:3003/schemas/json/KYCAgeCredential-v3.json"
         type:
           type: string
           x-omitempty: false
@@ -1385,7 +1385,7 @@ components:
         url:
           type: string
           x-omitempty: false
-          example: https://raw.githubusercontent.com/iden3/claim-schema-vocab/main/schemas/json/KYCAgeCredential-v3.json
+          example: http://47.242.107.228:3003/schemas/json/KYCAgeCredential-v3.json
         type:
           type: string
           x-omitempty: false

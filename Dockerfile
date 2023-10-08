@@ -1,4 +1,5 @@
-FROM golang:1.20.5 as base
+FROM ubuntu:22.04 as base
+
 ARG VERSION
 WORKDIR /service
 ENV GOBIN /service/bin
@@ -9,7 +10,22 @@ COPY ./internal ./internal
 COPY ./pkg ./pkg
 COPY ./go.mod ./
 COPY ./go.sum ./
+
+RUN apt-get update
+RUN apt-get install -y wget build-essential ca-certificates
+RUN wget https://go.dev/dl/go1.20.5.linux-arm64.tar.gz
+
+ENV GOROOT /usr/local/go
+ENV GOPATH /go
+ENV PATH /usr/local/go/bin:/go/bin:$PATH
+ENV GOBIN /service/bin
+
+RUN tar -xvf go1.20.5.linux-arm64.tar.gz
+RUN mv go /usr/local
+
+RUN go mod download
 RUN go install -buildvcs=false -ldflags "-X main.build=${VERSION}" ./cmd/...
+
 
 FROM alpine:latest
 RUN apk add --no-cache libstdc++ gcompat libgomp
