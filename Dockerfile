@@ -26,5 +26,5 @@ COPY --from=base ./service/bin/* ./
 COPY --from=base ./service/pkg/credentials ./pkg/credentials
 COPY --from=base "/go/pkg/mod/github.com/iden3/wasmer-go@v0.0.1/wasmer/packaged/" \
  "/go/pkg/mod/github.com/iden3/wasmer-go@v0.0.1/wasmer/packaged/"
-COPY --from=base "/go-iden3-core@v1.0.2/" "/go/pkg/mod/github.com/iden3/"
+
 
