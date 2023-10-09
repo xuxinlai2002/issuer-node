@@ -16,7 +16,7 @@ services:
       context: ../../
       dockerfile: ${DOCKER_FILE}
     ports:
-      - "3003:3001"
+      - "3003:3003"
     env_file:
       - ../../.env-api
       - ../../.env-issuer
