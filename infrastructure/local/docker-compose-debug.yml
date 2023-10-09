@@ -12,15 +12,13 @@ services:
       - ../../.env-ui
 
   api:
-    build:
-      context: ../../
-      dockerfile: ${DOCKER_FILE}
+    image: xuxinlai2002/issuer:v0.3
     ports:
-      - "3001:3001"
+      - "3003:3001"
     env_file:
       - ../../.env-api
       - ../../.env-issuer
-    command: sh -c "sleep 4s && ./migrate && ./platform"
+    command: sh -c "sleep 4s && cd /root/issuer-node/ && ./bin/migrate && ./bin/platform"
 
   api-ui:
     build:
@@ -31,7 +29,7 @@ services:
     env_file:
       - ../../.env-api
       - ../../.env-issuer
-    command: sh -c "sleep 4s && ./migrate && ./platform_ui"
+    command: sh -c "sleep 4s && cd /root/issuer-node/ && ./bin/migrate && ./bin/platform_ui"
 
   notifications:
     build:
@@ -40,25 +38,22 @@ services:
     env_file:
       - ../../.env-api
       - ../../.env-issuer
-    command: sh -c "sleep 4s && ./notifications"
+    command: sh -c "sleep 4s && cd /root/issuer-node && ./bin/notifications"
 
   pending_publisher:
-    build:
-      context: ../../
-      dockerfile: ${DOCKER_FILE}
+    image: xuxinlai2002/issuer:v0.3
     env_file:
       - ../../.env-api
       - ../../.env-issuer
-    command: sh -c "sleep 4s &&  ./pending_publisher"
+    command: sh -c "sleep 4s && cd /root/issuer-node/ && ./bin/pending_publisher"
 
   initializer:
-    build:
-      context: ../../
-      dockerfile: ${DOCKER_FILE}
+    image: xuxinlai2002/issuer:v0.3
     env_file:
       - ../../.env-api
       - ../../.env-issuer
-    command: sh -c "sleep 4s && ./migrate && ./issuer_initializer"
+    command: sh -c "sleep 4s && cd /root/issuer-node/ && ./bin/migrate && ./bin/issuer_initializer"
+    # command: sh -c "sleep 4s && ./migrate"
 
 networks:
   default:

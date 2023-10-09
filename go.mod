@@ -18,7 +18,7 @@ require (
 	github.com/iden3/contracts-abi/state/go/abi v1.0.0-beta.3
 	github.com/iden3/go-circuits v1.0.3
 	github.com/iden3/go-iden3-auth v1.2.0
-	github.com/iden3/go-iden3-core v1.0.2
+	github.com/uptSmart/go-iden3-core v1.0.0
 	github.com/iden3/go-iden3-crypto v0.0.15
 	github.com/iden3/go-jwz v1.0.0
 	github.com/iden3/go-merkletree-sql/db/pgx/v2 v2.0.5
