@@ -329,5 +329,5 @@ require (
 )
 
 replace (
-	github.com/iden3/go-iden3-core => github.com/uptSmart/go-iden3-core v1.0.0
+	github.com/iden3/go-iden3-core => github.com/uptSmart/go-iden3-core v4.0.0
 )
